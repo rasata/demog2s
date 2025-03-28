@@ -1,10 +1,18 @@
-# Calculatrice JavaScript
+# Calculatrice Scientifique JavaScript
 
-Une application web simple de calculatrice développée avec HTML, CSS et JavaScript.
+Une application web de calculatrice scientifique développée avec HTML, CSS et JavaScript.
 
 ## Fonctionnalités
 
 - Opérations arithmétiques de base (addition, soustraction, multiplication, division)
+- Fonctions scientifiques avancées :
+  - Fonctions trigonométriques (sin, cos, tan)
+  - Logarithmes (log, ln)
+  - Racine carrée, puissance
+  - Factorielle
+  - Constantes (π, e)
+- Mode standard et mode scientifique
+- Support des degrés et radians
 - Interface utilisateur intuitive et responsive
 - Support des entrées clavier
 - Fonction d'effacement et de retour arrière

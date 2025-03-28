@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Calculator</title>
+    <title>Calculatrice Scientifique</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,7 +11,11 @@
         <div class="display">
             <input type="text" id="result" disabled>
         </div>
-        <div class="buttons">
+        <div class="mode-toggle">
+            <button id="standard-mode" class="active">Standard</button>
+            <button id="scientific-mode">Scientifique</button>
+        </div>
+        <div class="buttons standard-buttons">
             <button class="clear" onclick="clearDisplay()">C</button>
             <button class="operator" onclick="appendToDisplay('/')">/</button>
             <button class="operator" onclick="appendToDisplay('*')">×</button>
@@ -34,6 +38,32 @@
             
             <button class="zero" onclick="appendToDisplay('0')">0</button>
             <button onclick="appendToDisplay('.')">.</button>
+        </div>
+        <div class="buttons scientific-buttons hidden">
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button class="operator" onclick="calculateSquareRoot()">√</button>
+            <button class="operator" onclick="calculatePower()">x^y</button>
+            <button class="operator" onclick="appendToDisplay('-')">-</button>
+            
+            <button onclick="calculateSin()">sin</button>
+            <button onclick="calculateCos()">cos</button>
+            <button onclick="calculateTan()">tan</button>
+            <button class="operator" onclick="appendToDisplay('+')">+</button>
+            
+            <button onclick="calculateLog()">log</button>
+            <button onclick="calculateLn()">ln</button>
+            <button onclick="appendToDisplay('Math.PI')">π</button>
+            <button class="operator" onclick="appendToDisplay('*')">×</button>
+            
+            <button onclick="appendToDisplay('(')">(</button>
+            <button onclick="appendToDisplay(')')">)</button>
+            <button onclick="calculateFactorial()">n!</button>
+            <button class="operator" onclick="appendToDisplay('/')">/</button>
+            
+            <button onclick="appendToDisplay('Math.E')">e</button>
+            <button onclick="backspace()">⌫</button>
+            <button class="equals" onclick="calculate()">=</button>
+            <button onclick="toggleDegRad()" id="deg-rad-toggle">DEG</button>
         </div>
     </div>
     <script src="script.js"></script>
