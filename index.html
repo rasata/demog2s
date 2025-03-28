@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculatrice Scientifique</title>
+    <title>Calculatrice Scientifique avec IA</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,6 +14,7 @@
         <div class="mode-toggle">
             <button id="standard-mode" class="active">Standard</button>
             <button id="scientific-mode">Scientifique</button>
+            <button id="ai-mode">IA</button>
         </div>
         <div class="buttons standard-buttons">
             <button class="clear" onclick="clearDisplay()">C</button>
@@ -64,6 +65,13 @@
             <button onclick="backspace()">⌫</button>
             <button class="equals" onclick="calculate()">=</button>
             <button onclick="toggleDegRad()" id="deg-rad-toggle">DEG</button>
+        </div>
+        <div class="buttons ai-buttons hidden">
+            <div class="ai-interface">
+                <textarea id="ai-prompt" placeholder="Posez votre question à Claude..."></textarea>
+                <button id="ai-submit" onclick="sendToAI()">Envoyer</button>
+                <div id="ai-response" class="ai-response"></div>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>

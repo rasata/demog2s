@@ -2,26 +2,74 @@
 const result = document.getElementById('result');
 const standardMode = document.getElementById('standard-mode');
 const scientificMode = document.getElementById('scientific-mode');
+const aiMode = document.getElementById('ai-mode');
 const standardButtons = document.querySelector('.standard-buttons');
 const scientificButtons = document.querySelector('.scientific-buttons');
+const aiButtons = document.querySelector('.ai-buttons');
 const degRadToggle = document.getElementById('deg-rad-toggle');
 
 // Mode state (degrees or radians)
 let isRadianMode = false;
 
-// Function to toggle between standard and scientific mode
+// Function to toggle between standard, scientific and AI mode
 standardMode.addEventListener('click', function() {
     standardMode.classList.add('active');
     scientificMode.classList.remove('active');
+    aiMode.classList.remove('active');
     standardButtons.classList.remove('hidden');
     scientificButtons.classList.add('hidden');
+    aiButtons.classList.add('hidden');
 });
+
+// Function to send prompt to Claude AI
+async function sendToAI() {
+    const prompt = document.getElementById('ai-prompt').value;
+    const responseElement = document.getElementById('ai-response');
+    
+    if (!prompt.trim()) {
+        responseElement.textContent = "Veuillez entrer une question.";
+        return;
+    }
+    
+    responseElement.textContent = "Chargement...";
+    
+    try {
+        const response = await fetch('/api/claude', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ prompt }),
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            responseElement.textContent = data.response;
+        } else {
+            responseElement.textContent = `Erreur: ${data.error}\n${data.details || ''}`;
+        }
+    } catch (error) {
+        responseElement.textContent = `Erreur de connexion: ${error.message}`;
+    }
+}
 
 scientificMode.addEventListener('click', function() {
     scientificMode.classList.add('active');
     standardMode.classList.remove('active');
+    aiMode.classList.remove('active');
     scientificButtons.classList.remove('hidden');
     standardButtons.classList.add('hidden');
+    aiButtons.classList.add('hidden');
+});
+
+aiMode.addEventListener('click', function() {
+    aiMode.classList.add('active');
+    standardMode.classList.remove('active');
+    scientificMode.classList.remove('active');
+    aiButtons.classList.remove('hidden');
+    standardButtons.classList.add('hidden');
+    scientificButtons.classList.add('hidden');
 });
 
 // Function to toggle between degrees and radians
