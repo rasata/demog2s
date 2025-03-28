@@ -1,6 +1,6 @@
-# Calculatrice Scientifique JavaScript
+# Calculatrice Scientifique JavaScript avec IA
 
-Une application web de calculatrice scientifique développée avec HTML, CSS et JavaScript.
+Une application web de calculatrice scientifique avec intégration d'IA, développée avec HTML, CSS et JavaScript.
 
 ## Fonctionnalités
 
@@ -13,6 +13,10 @@ Une application web de calculatrice scientifique développée avec HTML, CSS et 
   - Constantes (π, e)
 - Mode standard et mode scientifique
 - Support des degrés et radians
+- Intégration d'IA :
+  - Support de Claude (Anthropic)
+  - Support de Gemini (Google)
+  - Interface de chat simple
 - Interface utilisateur intuitive et responsive
 - Support des entrées clavier
 - Fonction d'effacement et de retour arrière
@@ -34,6 +38,13 @@ Une application web de calculatrice scientifique développée avec HTML, CSS et 
 
 ```bash
 npm install
+```
+
+4. Configurez les clés API dans un fichier `.env` :
+
+```
+ANTHROPIC_API_KEY=votre_clé_api_claude
+GEMINI_API_KEY=votre_clé_api_gemini
 ```
 
 ## Démarrage

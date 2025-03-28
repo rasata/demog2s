@@ -68,7 +68,13 @@
         </div>
         <div class="buttons ai-buttons hidden">
             <div class="ai-interface">
-                <textarea id="ai-prompt" placeholder="Posez votre question à Claude..."></textarea>
+                <div class="ai-model-selector">
+                    <select id="ai-model">
+                        <option value="claude">Claude</option>
+                        <option value="gemini">Gemini</option>
+                    </select>
+                </div>
+                <textarea id="ai-prompt" placeholder="Posez votre question..."></textarea>
                 <button id="ai-submit" onclick="sendToAI()">Envoyer</button>
                 <div id="ai-response" class="ai-response"></div>
             </div>

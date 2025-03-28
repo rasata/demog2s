@@ -21,9 +21,10 @@ standardMode.addEventListener('click', function() {
     aiButtons.classList.add('hidden');
 });
 
-// Function to send prompt to Claude AI
+// Function to send prompt to AI (Claude or Gemini)
 async function sendToAI() {
     const prompt = document.getElementById('ai-prompt').value;
+    const model = document.getElementById('ai-model').value;
     const responseElement = document.getElementById('ai-response');
     
     if (!prompt.trim()) {
@@ -31,15 +32,15 @@ async function sendToAI() {
         return;
     }
     
-    responseElement.textContent = "Chargement...";
+    responseElement.textContent = `Chargement... (${model})`;
     
     try {
-        const response = await fetch('/api/claude', {
+        const response = await fetch('/api/ai', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ prompt }),
+            body: JSON.stringify({ prompt, model }),
         });
         
         const data = await response.json();
